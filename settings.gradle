@@ -1,0 +1,3 @@
+include 'archaius-gcloud-test'
+
+rootProject.name='archaius-gcloud'

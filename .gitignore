@@ -1,0 +1,30 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+### JetBrains template
+*.iml
+.idea/
+*.ipr
+*.iws
+/out/
+.idea_modules/
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+### Java template
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+
+### Gradle template
+.gradle
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+

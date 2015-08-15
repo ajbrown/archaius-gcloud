@@ -1,0 +1,68 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+version = '0.0.0-SNAPSHOT'
+
+group = "org.ajbrown"
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.23'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.6.4'
+    compile 'com.netflix.archaius:archaius-core:0.7.1'
+    compile 'com.google.api-client:google-api-client:1.20.0'
+    compile 'com.google.apis:google-api-services-datastore-protobuf:v1beta2-rev1-2.1.0'
+
+    testCompile 'junit:junit:4.12'
+}
+
+ext.githubProjectName = rootProject.name
+
+project(':archaius-gcloud-test') {
+
+    apply plugin: 'java'
+    apply plugin: 'war'
+    apply plugin: 'appengine'
+    apply plugin: 'com.google.gcloud-preview'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    gcloud {
+        configurations {
+            prod {
+                args project: "archaius-gcloud-test", verbosity: "info"
+            }
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.23'
+
+        compile rootProject
+        compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.24'
+        compile 'com.google.api-client:google-api-client:1.20.0'
+        compile 'com.google.api-client:google-api-client-appengine:1.20.0'
+        compile 'javax.servlet:servlet-api:2.5'
+    }
+
+}
